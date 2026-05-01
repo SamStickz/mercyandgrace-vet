@@ -1,11 +1,11 @@
-import { Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-import Home from './pages/Home'
-import Services from './pages/Services'
-import Team from './pages/Team'
-import About from './pages/About'
-import Contact from './pages/Contact'
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Services from "./pages/Services";
+import Team from "./pages/Team";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 export default function App() {
   return (
@@ -22,5 +22,5 @@ export default function App() {
       </main>
       <Footer />
     </div>
-  )
+  );
 }

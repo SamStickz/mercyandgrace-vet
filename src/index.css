@@ -5,9 +5,9 @@
 @layer base {
   html { scroll-behavior: smooth; }
   body {
-    font-family: 'DM Sans', sans-serif;
-    background-color: #FAFAF8;
-    color: #1E1E1A;
+    font-family: 'Lato', sans-serif;
+    background-color: #F4F6F8;
+    color: #0B1F3A;
     overflow-x: hidden;
   }
 }
