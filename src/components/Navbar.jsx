@@ -1,43 +1,47 @@
-import { useState, useEffect } from 'react'
-import { Link, NavLink, useLocation } from 'react-router-dom'
+import { useState, useEffect } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const location = useLocation()
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-  useEffect(() => { setMenuOpen(false) }, [location])
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location]);
 
   const links = [
-    { to: '/', label: 'Home' },
-    { to: '/services', label: 'Services' },
-    { to: '/team', label: 'Our Team' },
-    { to: '/about', label: 'About' },
-  ]
+    { to: "/", label: "Home" },
+    { to: "/services", label: "Services" },
+    { to: "/team", label: "Our Team" },
+    { to: "/about", label: "About" },
+    { to: "/contact", label: "Find Us" },
+  ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled
-        ? 'bg-[#FAFAF8]/95 backdrop-blur-md shadow-sm border-b border-[#c8d5c0]/30'
-        : 'bg-[#FAFAF8]/90 backdrop-blur-sm'
-    }`}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-[#FAFAF8]/95 backdrop-blur-md shadow-sm border-b border-[#c8d5c0]/30"
+          : "bg-[#FAFAF8]/90 backdrop-blur-sm"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
-
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 group">
           <div className="w-9 h-9 rounded-full bg-[#4a6e4e] flex items-center justify-center flex-shrink-0 group-hover:bg-[#2d4a30] transition-colors duration-200">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-              <circle cx="6" cy="8" r="2.2"/>
-              <circle cx="12" cy="5.5" r="2.2"/>
-              <circle cx="18" cy="8" r="2.2"/>
-              <circle cx="4" cy="13.5" r="1.8"/>
-              <path d="M12 10.5c-3 0-5.5 2-5.5 5 0 2.5 1.5 4 3 4.5.8.3 1.7.5 2.5.5s1.7-.2 2.5-.5c1.5-.5 3-2 3-4.5 0-3-2.5-5-5.5-5z"/>
+              <circle cx="6" cy="8" r="2.2" />
+              <circle cx="12" cy="5.5" r="2.2" />
+              <circle cx="18" cy="8" r="2.2" />
+              <circle cx="4" cy="13.5" r="1.8" />
+              <path d="M12 10.5c-3 0-5.5 2-5.5 5 0 2.5 1.5 4 3 4.5.8.3 1.7.5 2.5.5s1.7-.2 2.5-.5c1.5-.5 3-2 3-4.5 0-3-2.5-5-5.5-5z" />
             </svg>
           </div>
           <div className="leading-none">
@@ -59,8 +63,8 @@ export default function Navbar() {
                 className={({ isActive }) =>
                   `text-[13px] tracking-[0.07em] uppercase transition-colors duration-200 font-sans ${
                     isActive
-                      ? 'text-[#4a6e4e] font-medium'
-                      : 'text-[#3a3a36] hover:text-[#4a6e4e] font-normal'
+                      ? "text-[#4a6e4e] font-medium"
+                      : "text-[#3a3a36] hover:text-[#4a6e4e] font-normal"
                   }`
                 }
               >
@@ -69,12 +73,24 @@ export default function Navbar() {
             </li>
           ))}
           <li>
-            <Link
-              to="/contact"
+            <a
+              href="https://portal.mercyandgracevet.org/vetedge_portal"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-[#4a6e4e] text-[#4a6e4e] text-[13px] font-medium tracking-wide px-5 py-2.5 rounded-full hover:bg-[#4a6e4e] hover:text-white transition-all duration-200"
+            >
+              Client Portal
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://portal.mercyandgracevet.org/vetedge_guest_booking"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-[#4a6e4e] text-white text-[13px] font-medium tracking-wide px-5 py-2.5 rounded-full hover:bg-[#2d4a30] transition-all duration-200 hover:-translate-y-0.5 shadow-md"
             >
-              Book a Visit
-            </Link>
+              Book an Appointment
+            </a>
           </li>
         </ul>
 
@@ -87,15 +103,24 @@ export default function Navbar() {
           <div className="w-6 flex flex-col gap-[5px]">
             <span
               className="block h-[2px] bg-[#1e1e1a] rounded-full transition-all duration-300 origin-center"
-              style={{ transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none' }}
+              style={{
+                transform: menuOpen ? "translateY(7px) rotate(45deg)" : "none",
+              }}
             />
             <span
               className="block h-[2px] bg-[#1e1e1a] rounded-full transition-all duration-300"
-              style={{ opacity: menuOpen ? 0 : 1, transform: menuOpen ? 'scaleX(0)' : 'scaleX(1)' }}
+              style={{
+                opacity: menuOpen ? 0 : 1,
+                transform: menuOpen ? "scaleX(0)" : "scaleX(1)",
+              }}
             />
             <span
               className="block h-[2px] bg-[#1e1e1a] rounded-full transition-all duration-300 origin-center"
-              style={{ transform: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none' }}
+              style={{
+                transform: menuOpen
+                  ? "translateY(-7px) rotate(-45deg)"
+                  : "none",
+              }}
             />
           </div>
         </button>
@@ -104,7 +129,10 @@ export default function Navbar() {
       {/* Mobile dropdown */}
       <div
         className="md:hidden overflow-hidden transition-all duration-300 ease-in-out"
-        style={{ maxHeight: menuOpen ? '400px' : '0px', opacity: menuOpen ? 1 : 0 }}
+        style={{
+          maxHeight: menuOpen ? "500px" : "0px",
+          opacity: menuOpen ? 1 : 0,
+        }}
       >
         <div className="bg-[#FAFAF8] border-t border-[#e8e6e0] px-6 pt-4 pb-6 flex flex-col gap-1">
           {links.map(({ to, label }) => (
@@ -114,24 +142,34 @@ export default function Navbar() {
               className={({ isActive }) =>
                 `block py-3 px-4 rounded-xl text-sm font-sans tracking-wide transition-colors ${
                   isActive
-                    ? 'bg-[#f3f3ef] text-[#4a6e4e] font-medium'
-                    : 'text-[#3a3a36] hover:bg-[#f3f3ef] hover:text-[#4a6e4e]'
+                    ? "bg-[#f3f3ef] text-[#4a6e4e] font-medium"
+                    : "text-[#3a3a36] hover:bg-[#f3f3ef] hover:text-[#4a6e4e]"
                 }`
               }
             >
               {label}
             </NavLink>
           ))}
-          <div className="pt-2 mt-1 border-t border-[#e8e6e0]">
-            <Link
-              to="/contact"
+          <div className="pt-2 mt-1 border-t border-[#e8e6e0] flex flex-col gap-2">
+            <a
+              href="https://portal.mercyandgracevet.org/vetedge_portal"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-center border border-[#4a6e4e] text-[#4a6e4e] py-3.5 rounded-full text-sm font-medium hover:bg-[#f3f3ef] transition-colors"
+            >
+              Client Portal
+            </a>
+            <a
+              href="https://portal.mercyandgracevet.org/vetedge_guest_booking"
+              target="_blank"
+              rel="noopener noreferrer"
               className="block text-center bg-[#4a6e4e] text-white py-3.5 rounded-full text-sm font-medium hover:bg-[#2d4a30] transition-colors"
             >
-              Book a Visit
-            </Link>
+              Book an Appointment
+            </a>
           </div>
         </div>
       </div>
     </nav>
-  )
+  );
 }
