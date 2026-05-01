@@ -578,7 +578,7 @@ export default function Home() {
             </h2>
             <p className="text-[15px] font-normal text-[#0B1F3A] leading-relaxed mb-5">
               Founded in 2015, Mercy &amp; Grace Veterinary has grown from a
-              small local clinic into a trusted practice caring for over 300
+              small local clinic into a trusted practice caring for over 5000
               pets. Our name reflects everything we stand for — mercy in how we
               treat every animal, grace in the standard we hold ourselves to.
             </p>
